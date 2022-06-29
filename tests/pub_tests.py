@@ -37,6 +37,12 @@ class TestPub(unittest.TestCase):
         self.pub.add_money(5.00)
         self.assertEqual(105.00, self.pub.till)
 
+    def test_pub_can_find_drink(self):
+        self.assertEqual(self.drink1, self.pub.find_drink_by_name('beer'))
+
+    def test_pub_can_find_drink_not_found(self):
+        self.assertEqual(None, self.pub.find_drink_by_name('wkd'))
+
     def test_pub_can_sell_drink(self):
         customer = Customer("Jon", 35, 100.00)
         self.pub.sell_drink(customer, "beer")
