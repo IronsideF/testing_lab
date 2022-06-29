@@ -9,7 +9,11 @@ class TestPub(unittest.TestCase):
         self.drink1 = Drink("beer", 5, 1)
         self.drink2 = Drink("vodka", 6, 3)
         self.drink3 = Drink("tequila", 8, 5)
-        drinks_list = [self.drink1, self.drink2, self.drink3]
+        drinks = {
+            'beer': self.drink1,
+            'vodka': self.drink2,
+            'tequila': self.drink3
+        }
         self.food1 = Food("crisps", 2, 1)
         self.food2 = Food("peanuts", 3, 2)
         food_list = [self.food1, self.food2]
@@ -18,7 +22,7 @@ class TestPub(unittest.TestCase):
             'vodka': 15,
             'tequila': 12
         }
-        self.pub = Pub("The Queen's Arm", 100.00, drinks_list, food_list, stock)
+        self.pub = Pub("The Queen's Arm", 100.00, drinks, food_list, stock)
 
     def test_pub_has_name(self):
         self.assertEqual("The Queen's Arm", self.pub.name)
@@ -93,6 +97,9 @@ class TestPub(unittest.TestCase):
 
     def test_pub_has_stock(self):
         self.assertEqual(25, self.pub.stock['beer'])
+    
+    def test_pub_gets_stock_value(self):
+        self.assertEqual(311, self.pub.stock_value())
 
 
 

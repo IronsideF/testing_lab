@@ -11,9 +11,11 @@ class Pub:
         self.till += amount_change
 
     def find_drink_by_name(self, drink_name):
-        for drink in self.drinks:
-            if drink.name == drink_name:
-                return drink
+        if drink_name in self.drinks:
+            return self.drinks[drink_name]
+        # for drink in self.drinks:
+        #     if drink.name == drink_name:
+        #         return drink
 
     def find_customer_age(self, customer):
         return customer.age >= 18
@@ -37,4 +39,11 @@ class Pub:
             customer.remove_money(dish.price)
             self.add_money(dish.price)
             customer.reduce_drunkeness(dish)
+
+    def stock_value(self):
+        value = 0
+        drink_kinds = self.drinks.keys()
+        for drink in drink_kinds:
+            value += self.drinks[drink].price * self.stock[drink]
+        return value
 
