@@ -27,6 +27,7 @@ class Pub:
                 customer.remove_money(drink.price)
                 self.add_money(drink.price)
                 customer.add_drunkeness(drink)
+                self.stock[drink_name] -= 1
 
     def find_food_by_name(self, food_name):
         for dish in self.food_list:

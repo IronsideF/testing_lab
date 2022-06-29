@@ -43,6 +43,7 @@ class TestPub(unittest.TestCase):
         self.assertEqual(self.pub.till, 105.00)
         self.assertEqual(customer.wallet, 95.00)
         self.assertEqual(1, customer.drunkeness)
+        self.assertEqual(24, self.pub.stock['beer'])
         
     def test_pub_check_age(self):
         customer = Customer('Jon', 30, 100.00)
